@@ -11,6 +11,8 @@ dummy_maze_description = """A . . . . . . . . .
 . # . . # . . . . .
 . . . . . . # . . E"""
 
-maze_manager = MazeManager(dummy_maze_description)
-maze_manager.print_maze()
-maze_manager.do_action()
+maze_manager = MazeManager()
+maze_manager.set_maze(dummy_maze_description)
+
+print(maze_manager)
+maze_manager.do_action("NORTH")
