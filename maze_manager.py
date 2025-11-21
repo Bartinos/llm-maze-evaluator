@@ -1,10 +1,11 @@
 class MazeManager():
     maze = [[]]
     agent_location = (0,0)
+
     def __init__(self):
         pass
 
-    def parse_maze_from_ascii_grid(self, maze_description):
+    def _parse_maze_from_ascii_grid(self, maze_description):
         self.maze = [line.split() for line in maze_description.splitlines()]
         
 
@@ -18,7 +19,7 @@ class MazeManager():
         return self.agent_location
     
     def set_maze(self, maze_description):
-        self.parse_maze_from_ascii_grid(maze_description)
+        self._parse_maze_from_ascii_grid(maze_description)
         self.agent_location = self._extract_agent_location()
 
     def __str__(self):
@@ -29,8 +30,7 @@ class MazeManager():
                     str += self.maze[row_index][column_index] + " "
                 else: 
                     str += "A "
-                # str.strip()
-            str += "\n"
+            str = str.rstrip() + "\n"
 
         return str
 
@@ -50,14 +50,14 @@ class MazeManager():
 
     def _action_to_coords(self, action):
         new_coords = (-1,-1)
-        match action:
-            case "UP":
+        match action.lower():
+            case "up":
                 new_coords = (self.agent_location[0] - 1, self.agent_location[1]) 
-            case "DOWN":
+            case "down":
                 new_coords = (self.agent_location[0] + 1, self.agent_location[1]) 
-            case "LEFT":
+            case "left":
                 new_coords = (self.agent_location[0], self.agent_location[1] - 1) 
-            case "RIGHT":
+            case "right":
                 new_coords = (self.agent_location[0], self.agent_location[1] + 1) 
             case _:
                 print("Could not interpret action: ", action)
