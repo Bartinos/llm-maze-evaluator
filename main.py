@@ -15,4 +15,10 @@ maze_manager = MazeManager()
 maze_manager.set_maze(dummy_maze_description)
 
 print(maze_manager)
-maze_manager.do_action("NORTH")
+maze_manager.do_action("DOWN")
+maze_manager.do_action("DOWN")
+maze_manager.do_action("DOWN")
+maze_manager.do_action("DOWN")
+maze_manager.do_action("LEFT")
+
+print(maze_manager)
