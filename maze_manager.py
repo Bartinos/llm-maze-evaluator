@@ -7,6 +7,10 @@ class MazeManager():
 
     def _parse_maze_from_ascii_grid(self, maze_description):
         self.maze = [line.split() for line in maze_description.splitlines()]
+
+    def _from_maze_to_ascii_grid(self) -> str:
+        return "maze ascci grid..."
+        # return [value for value in [row for row in self.maze]]
         
 
     """Not ideal for performance"""
@@ -37,16 +41,16 @@ class MazeManager():
     def reset(self):
         pass
 
-    def do_action(self, action) -> float:
+    def do_action(self, action):
         new_coords = self._action_to_coords(action)
         
         if self._is_valid_coord(new_coords) == False:
             print("Walked into invalid coord: ", new_coords)
-            return -1
+            return -1, self._from_maze_to_ascii_grid()
         
         self.agent_location = new_coords
 
-        return 1
+        return 1, self._from_maze_to_ascii_grid()
 
     def _action_to_coords(self, action):
         new_coords = (-1,-1)

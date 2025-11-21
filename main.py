@@ -14,8 +14,8 @@ dummy_maze_description = """A . . . . . . . . .
 maze_manager = MazeManager()
 maze_manager.set_maze(dummy_maze_description)
 
-print(maze_manager)
-
+print("Options: up, down, left, right")
 while True:
     print(maze_manager)
-    maze_manager.do_action(input("Go: "))
+    reward_state_pair = maze_manager.do_action(input("Go: "))
+    # print(reward_state_pair[1])
