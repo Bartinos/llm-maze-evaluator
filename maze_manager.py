@@ -15,8 +15,8 @@ class MazeManager():
 
     """Not ideal for performance"""
     def _extract_agent_location(self):
-        for row_index, row  in enumerate(self.maze):
-            for column_index, column  in enumerate(self.maze):
+        for row_index in range(len(self.maze)):
+            for column_index in range(len(self.maze[0])):
                 if "A" in self.maze[row_index][column_index]:
                     self.agent_location = (row_index, column_index)
                     self.maze[row_index][column_index] = "."
@@ -28,8 +28,8 @@ class MazeManager():
 
     def __str__(self):
         str = ""
-        for row_index, row  in enumerate(self.maze):
-            for column_index, column  in enumerate(self.maze):
+        for row_index in range(len(self.maze)):
+            for column_index in range(len(self.maze[0])):
                 if (row_index, column_index) != self.agent_location:
                     str += self.maze[row_index][column_index] + " "
                 else: 
